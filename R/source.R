@@ -104,7 +104,7 @@ GoogleFinanceSource <- function(query, params =
 						start = 0, 
 						num = 20, 
 						output='rss'),...){
-	feed <- "http://www.google.com/finance/company_news"
+	feed <- "https://www.google.com/finance/company_news"
 	parser <- function(cr){
 		tree <- parse(cr, type = "XML", asText = FALSE)
 		xpathSApply(tree, path = "//item")
@@ -173,7 +173,7 @@ GoogleNewsSource <- function(query, params =
 						ie='utf-8', 
 						num = 30, 
 						output='rss'), ...){
-	feed <- "http://news.google.com/news"
+	feed <- "https://news.google.com/news"
 	fq <- feedquery(feed, params)
 	parser <- function(cr){
 		tree <- parse(cr, type = "XML", asText = TRUE)
@@ -203,7 +203,7 @@ GoogleNewsSource <- function(query, params =
 #' @importFrom XML xmlInternalTreeParse xpathSApply getNodeSet xmlValue newXMLNamespace
 #' @aliases readReutersNews
 ReutersNewsSource <- function(query = 'businessNews', ...){
-	feed <- "http://feeds.reuters.com/reuters"
+	feed <- "https://feeds.reuters.com/reuters"
 	
 	fq <- paste(feed, query, sep = "/")
 	parser <- function(cr){
@@ -287,7 +287,7 @@ NYTimesSource <- function(query, n = 100, appid,
         maxredirs = 10,
         timeout = 30,
         connecttimeout = 30), ...){
-	feed <- "http://api.nytimes.com/svc/search/v2/articlesearch.json"
+	feed <- "https://api.nytimes.com/svc/search/v2/articlesearch.json"
 	fq <- feedquery(feed, params)
 	
 	parser <- function(cr){
@@ -328,7 +328,7 @@ NYTimesSource <- function(query, n = 100, appid,
 #' @importFrom XML xpathSApply
 #' @aliases readYahooInplay
 YahooInplaySource <- function(...){
-	url <- "http://finance.yahoo.com/marketupdate/inplay"
+	url <- "https://finance.yahoo.com/marketupdate/inplay"
 	parser <- function(cr){
 		tree <- parse(cr, useInternalNodes = T, type = "HTML")
 		xp_expr = "//div[@class= 'body yom-art-content clearfix']/p"
